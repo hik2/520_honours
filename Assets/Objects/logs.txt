@@ -1,0 +1,65 @@
+Small nail distance from 3D cross position: x= 0.001259029, y= 0.002855539, z= 0.003631711
+Big nail distance from 3D cross position: x= -0.003184974, y= -0.07130212, z= -0.01090741
+Nail local rotation: x= -0.6249105, y= -0.1159986, z= -0.1860549
+
+
+Small screw distance from 2D cross position: x= 0.002917826, y= 0.0006098151, z= 0.001326621
+Big screw distance from 2D cross position: x= 0.01948315, y= -0.1021938, z=-0.02311635
+Screw local rotation: x= 0.1263519, y= -0.1636132, z= 0.0581683
+
+
+Small nail distance from 3D cross position: x= -0.004027128, y= 0.003922462, z= -0.0004793406
+Big nail distance from 3D cross position: x= -0.01009333, y= -0.07053435, z= -0.01272178
+Nail local rotation: x= -0.6380035, y= -0.1099543, z= -0.1900027
+
+
+Small screw distance from 3D_2 cross position: x= -0.04929295, y= 0.03255671, z= 0.005940974
+Big screw distance from 3D_2 cross position: x= -0.06902903, y= -0.07197523, z= -0.005194724
+Screw local rotation: x= 0.07736858, y= 0.296672, z= -0.07268181
+
+
+Small screw distance from 3D cross position: x= 0.0209282, y= 0.03443271, z= -0.005626321
+Big screw distance from 3D cross position: x= 0.002819479, y= -0.07091409, z= -0.009443879
+Screw local rotation: x= 0.0300247, y= 0.1481171, z= -0.0811526
+
+
+Small screw distance from 2D cross position: x= 0.001163781, y= -0.003174901, z= -0.002851963
+Big screw distance from 2D cross position: x= 0.01048702, y= -0.1080972, z=-0.02142179
+Screw local rotation: x= 0.09381954, y= -0.1980748, z= 0.02564873
+
+
+Small nail distance from 3D cross position: x= 0.001547039, y= -0.00311166, z= 0.001202345
+Big nail distance from 3D cross position: x= -0.003124535, y= -0.07707322, z= -0.01423657
+Nail local rotation: x= -0.6250241, y= -0.08585186, z= -0.1538235
+
+
+Small screw distance from 3D cross position: x= -0.0632233, y= 0.006157339, z= 0.02780724
+Big screw distance from 3D cross position: x= -0.0746423, y= -0.09679997, z= 0.001164377
+Screw local rotation: x= 0.1269324, y= 0.02946175, z= -0.04995048
+
+
+Small nail distance from 3D cross position: x= 0.00281477, y= 0.01303518, z= 0.001003683
+Big nail distance from 3D cross position: x= -0.00146687, y= -0.05937374, z= -0.02065516
+Nail local rotation: x= -0.5846468, y= -0.1230093, z= -0.2111396
+
+
+Small screw distance from 2D cross position: x= 0.003596246, y= 0.01966947, z= 0.004451931
+Big screw distance from 2D cross position: x= 0.01021022, y= -0.08424371, z=-0.0200175
+Screw local rotation: x= 0.1174921, y= -0.1049782, z= 0.01891227
+
+
+Small nail distance from 3D cross position: x= -0.004237235, y= 0.00228864, z= -0.001143396
+Big nail distance from 3D cross position: x= -0.01015407, y= -0.07250041, z= -0.01124668
+Nail local rotation: x= -0.653842, y= -0.07588306, z= -0.1454936
+
+
+Small screw distance from 3D cross position: x= -0.009901285, y= 0.0348171, z= 0.0086537
+Big screw distance from 3D cross position: x= -0.006965995, y= -0.07130766, z= -0.004359961
+Screw local rotation: x= 0.06205679, y= -0.257412, z= -0.002369625
+
+
+Small screw distance from 2D cross position: x= 0.01677203, y= 0.06082344, z= 0.009366572
+Big screw distance from 2D cross position: x= 0.029019, y= -0.04511994, z=0.001214981
+Screw local rotation: x= 0.04151458, y= -0.06538302, z= 0.05490101
+
+

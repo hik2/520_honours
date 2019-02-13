@@ -6,9 +6,7 @@ using System.IO;
 public class ControllerGrabObject : MonoBehaviour {
 
     private SteamVR_TrackedObject trackedObj;
-    private GameObject collidingObject;
-    private GameObject objectInHand;
-    public spawnObjects spawnObjectsClass;
+    private GameObject collidingObject, objectInHand;
 
     private GameObject crossTwoDim, crossThreeDim, crossThreeSecDim;
     private float crossTwoDimX, crossTwoDimY, crossTwoDimZ;
@@ -186,6 +184,7 @@ public class ControllerGrabObject : MonoBehaviour {
                     writer.WriteLine("Small screw distance from 2D cross position: x= " + smallScrewTwoDimDisX + ", y= " + smallScrewTwoDimDisY + ", z= " + smallScrewTwoDimDisZ);
                     writer.WriteLine("Big screw distance from 2D cross position: x= " + bigScrewTwoDimDisX + ", y= " + bigScrewTwoDimDisY + ", z=" + bigScrewTwoDimDisZ);
                     writer.WriteLine("Screw local rotation: x= " + screwRotX + ", y= " + screwRotY + ", z= " + screwRotZ);
+                    writer.WriteLine("\n");
                 }
 
                 // If screw placed within 3D cross area (middle cross)
@@ -204,6 +203,7 @@ public class ControllerGrabObject : MonoBehaviour {
                     writer.WriteLine("Small screw distance from 3D cross position: x= " + smallScrewThreeDimDisX + ", y= " + smallScrewThreeDimDisY + ", z= " + smallScrewThreeDimDisZ);
                     writer.WriteLine("Big screw distance from 3D cross position: x= " + bigScrewThreeDimDisX + ", y= " + bigScrewThreeDimDisY + ", z= " + bigScrewThreeDimDisZ);
                     writer.WriteLine("Screw local rotation: x= " + screwRotX + ", y= " + screwRotY + ", z= " + screwRotZ);
+                    writer.WriteLine("\n");
                 }
 
                 // If screw placed within 3D second cross area (right cross)
@@ -222,8 +222,8 @@ public class ControllerGrabObject : MonoBehaviour {
                     writer.WriteLine("Small screw distance from 3D_2 cross position: x= " + smallScrewThreeSecDimDisX + ", y= " + smallScrewThreeSecDimDisY + ", z= " + smallScrewThreeSecDimDisZ);
                     writer.WriteLine("Big screw distance from 3D_2 cross position: x= " + bigScrewThreeSecDimDisX + ", y= " + bigScrewThreeSecDimDisY + ", z= " + bigScrewThreeSecDimDisZ);
                     writer.WriteLine("Screw local rotation: x= " + screwRotX + ", y= " + screwRotY + ", z= " + screwRotZ);
+                    writer.WriteLine("\n");
                 }
-                writer.WriteLine("\n");
             }
 
             // Nail Distances
@@ -260,6 +260,7 @@ public class ControllerGrabObject : MonoBehaviour {
                     writer.WriteLine("Small nail distance from 2D cross position: x= " + smallNailTwoDimDisX + ", y= " + smallNailTwoDimDisY + ", z= " + smallNailTwoDimDisZ);
                     writer.WriteLine("Big nail distance from 2D cross position: x= " + bigNailTwoDimDisX + ", y= " + bigNailTwoDimDisY + ", z= " + bigNailTwoDimDisZ);
                     writer.WriteLine("Nail local rotation: x= " + nailRotX + ", y= " + nailRotY + ", z= " + nailRotZ);
+                    writer.WriteLine("\n");
                 }
 
                 // If nail placed within 3D cross area (middle cross)
@@ -278,6 +279,7 @@ public class ControllerGrabObject : MonoBehaviour {
                     writer.WriteLine("Small nail distance from 3D cross position: x= " + smallNailThreeDimDisX + ", y= " + smallNailThreeDimDisY + ", z= " + smallNailThreeDimDisZ);
                     writer.WriteLine("Big nail distance from 3D cross position: x= " + bigNailThreeDimDisX + ", y= " + bigNailThreeDimDisY + ", z= " + bigNailThreeDimDisZ);
                     writer.WriteLine("Nail local rotation: x= " + nailRotX + ", y= " + nailRotY + ", z= " + nailRotZ);
+                    writer.WriteLine("\n");
                 }
 
                 // If nail placed within 3D second cross area (right cross)
@@ -296,8 +298,8 @@ public class ControllerGrabObject : MonoBehaviour {
                     writer.WriteLine("Small nail distance from 3D_2 cross position: x= " + smallNailThreeSecDimDisX + ", y= " + smallNailThreeSecDimDisY + ", z= " + smallNailThreeSecDimDisZ);
                     writer.WriteLine("Big nail distance from 3D_2 cross position: x= " + bigNailThreeSecDimDisX + ", y= " + bigNailThreeSecDimDisY + ", z= " + bigNailThreeSecDimDisZ);
                     writer.WriteLine("Nail local rotation: x= " + nailRotX + ", y= " + nailRotY + ", z= " + nailRotZ);
+                    writer.WriteLine("\n");
                 }
-                writer.WriteLine("\n");
             }
             writer.Close();
         }
@@ -324,8 +326,8 @@ public class ControllerGrabObject : MonoBehaviour {
         }
         if (Controller.GetPressUp(SteamVR_Controller.ButtonMask.Grip))
         {
-            Rigidbody collidingBody = collidingObject.GetComponent<Rigidbody>();
-            collidingBody.isKinematic = !collidingBody.isKinematic;
+            // Reset scene
+
         }
     }
 }

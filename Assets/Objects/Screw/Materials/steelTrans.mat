@@ -64,7 +64,7 @@ Material:
     - _BumpScale: 1
     - _ColorMask: 15
     - _Cutoff: 0.5
-    - _Darken: 1
+    - _Darken: 0.75
     - _DetailNormalMapScale: 1
     - _DstBlend: 10
     - _EnableExternalAlpha: 0
@@ -75,7 +75,7 @@ Material:
     - _Mode: 3
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _SeeThru: 0.25
+    - _SeeThru: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
