@@ -8,7 +8,13 @@ University of Waikato 520 Honours Project
 4. Ensure the VR headset and controllers are turned on.
 5. The Unity project should automatically open to ```MyScene```. If not, open it in ```Assets/Scenes/MyScene```.
 6. Press the Play icon at the top in the Unity project to run the project in VR mode.
-7. Press the play icon again to end running the project in VR mode.
+7. Press the Play icon again to end running the project in VR mode.
+
+## Hardware (Dragonair)
+* Intel(R) Core(TM) i5-6600K CPU @ 3.50GHz
+* NVIDIA GeForce GTX 1080 8GB DDR5
+* Samsung HMD Odyssey
+* Windows Mixed Reality Controllers
     
 ## Headset/controllers not working/SteamVR errors:
 * Check that everything is plugged in correctly.
