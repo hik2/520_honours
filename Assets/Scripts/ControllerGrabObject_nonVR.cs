@@ -4,7 +4,7 @@ using UnityEngine;
 using System.IO;
 using UnityEngine.SceneManagement;
 
-public class ControllerGrabObject : MonoBehaviour {
+public class ControllerGrabObject_nonVR : MonoBehaviour {
 
     private SteamVR_TrackedObject trackedObj;
     private GameObject collidingObject, objectInHand;
@@ -15,15 +15,16 @@ public class ControllerGrabObject : MonoBehaviour {
     private float crossThreeSecDimX, crossThreeSecDimY, crossThreeSecDimZ;
     private float paperX, paperY, paperZ;
 
-    private GameObject screwSmallBot, screwBigBot, nailSmallBot, nailBigBot, paper, screw, nail, cone, coneBot, cube, cubeBot;
-    private bool paperColl, crossTwoDimColl, crossThreeDimColl, crossThreeSecDimColl;
+    private GameObject screwSmallBot, screwBigBot, nailSmallBot, nailBigBot, paper, screw, nail;
+    private bool crossTwoDimColl, crossThreeDimColl, crossThreeSecDimColl;
 
     public bool colliding;
+    public float speed = 5.0f;
 
-    private SteamVR_Controller.Device Controller
+    /*private SteamVR_Controller.Device Controller
     {
         get { return SteamVR_Controller.Input((int)trackedObj.index); }
-    }
+    }*/
 
     void Awake()
     {
@@ -33,8 +34,6 @@ public class ControllerGrabObject : MonoBehaviour {
         crossThreeDim = GameObject.Find("cross3D");
         crossThreeSecDim = GameObject.Find("cross3D_2");
         paper = GameObject.Find("paper");
-        cone = GameObject.Find("cone");
-        cube = GameObject.Find("cube");
 
         crossTwoDimX = crossTwoDim.transform.position.x;
         crossTwoDimY = crossTwoDim.transform.position.y;
@@ -58,12 +57,10 @@ public class ControllerGrabObject : MonoBehaviour {
         nail = GameObject.Find("nailBig");
         nailSmallBot = GameObject.Find("nailBig/nailSmall/nailSmallBottom");
         nailBigBot = GameObject.Find("nailBig/nailBigBottom");
-        coneBot = GameObject.Find("cone/coneBottom");
-        cubeBot = GameObject.Find("cube/cubeBottom");
 
         // Write current DateTime to text file log.txt in Assets/Objects folder
         StreamWriter writer = new StreamWriter("Assets/Objects/logs.txt", true);
-        writer.WriteLine("Current DateTime on Awake: " + System.DateTime.Now);
+        writer.WriteLine( "Current DateTime on Awake: " + System.DateTime.Now );
         writer.WriteLine("\n");
         writer.Close();
     }
@@ -83,21 +80,10 @@ public class ControllerGrabObject : MonoBehaviour {
 
         if (colliding == true)
         {
-            // If cone/cube enters paper area
-            if( other.gameObject == paper )
-            {
-                Debug.Log("In paper area");
-                paperColl = true;
-                crossTwoDimColl = false;
-                crossThreeDimColl = false;
-                crossThreeSecDimColl = false;
-            }
-
             // If screw/nail enters 2D cross area
             if (other.gameObject == crossTwoDim)
             {
                 Debug.Log("In 2D cross area");
-                paperColl = false;
                 crossTwoDimColl = true;
                 crossThreeDimColl = false;
                 crossThreeSecDimColl = false;
@@ -107,7 +93,6 @@ public class ControllerGrabObject : MonoBehaviour {
             if (other.gameObject == crossThreeDim)
             {
                 Debug.Log("In 3D cross area");
-                paperColl = false;
                 crossTwoDimColl = false;
                 crossThreeDimColl = true;
                 crossThreeSecDimColl = false;
@@ -117,7 +102,6 @@ public class ControllerGrabObject : MonoBehaviour {
             if (other.gameObject == crossThreeSecDim)
             {
                 Debug.Log("In 3D_2 cross area");
-                paperColl = false;
                 crossTwoDimColl = false;
                 crossThreeDimColl = false;
                 crossThreeSecDimColl = true;
@@ -138,7 +122,6 @@ public class ControllerGrabObject : MonoBehaviour {
         }
         collidingObject = null;
 
-        paperColl = false;
         crossTwoDimColl = false;
         crossThreeDimColl = false;
         crossThreeSecDimColl = false;
@@ -154,12 +137,6 @@ public class ControllerGrabObject : MonoBehaviour {
 
         // Hides the controller so it looks like the object picked up replaces the controller
         trackedObj.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-
-        // Write current DateTime to text file log.txt in Assets/Objects folder
-        StreamWriter writer = new StreamWriter("Assets/Objects/logs.txt", true);
-        writer.WriteLine("Current DateTime on picking up object: " + System.DateTime.Now);
-        writer.WriteLine("\n");
-        writer.Close();
     }
 
     private FixedJoint AddFixedJoint()
@@ -180,50 +157,6 @@ public class ControllerGrabObject : MonoBehaviour {
 
             // Write logs to text file log.txt in Assets/Objects folder
             StreamWriter writer = new StreamWriter("Assets/Objects/logs.txt", true);
-
-            // Cone Distances
-            if (objectInHand.name == "cone")
-            {
-                // Cone xyz positions
-                float coneBotX = coneBot.transform.position.x;
-                float coneBotY = coneBot.transform.position.y;
-                float coneBotZ = coneBot.transform.position.z;
-
-                // If cone placed within paper area
-                if( paperColl )
-                {
-                    // Distance of cone from paper
-                    float coneDisX = coneBotX - paperX;
-                    float coneDisY = coneBotY - paperY;
-                    float coneDisZ = coneBotZ - paperZ;
-
-                    writer.WriteLine("Current DateTime on releasing cone: " + System.DateTime.Now);
-                    writer.WriteLine("Cone distance from paper position: x= " + coneDisX + ", y= " + coneDisY + ", z= " + coneDisZ);
-                    writer.WriteLine("\n");
-                }
-            }
-
-            // Cube Distances
-            if (objectInHand.name == "cube")
-            {
-                // Cube xyz positions
-                float cubeBotX = cubeBot.transform.position.x;
-                float cubeBotY = cubeBot.transform.position.y;
-                float cubeBotZ = cubeBot.transform.position.z;
-
-                // If cube placed within paper area
-                if( paperColl )
-                {
-                    // Distance of cube from paper
-                    float cubeDisX = cubeBotX - paperX;
-                    float cubeDisY = cubeBotY - paperY;
-                    float cubeDisZ = cubeBotZ - paperZ;
-
-                    writer.WriteLine("Current DateTime on releasing cube: " + System.DateTime.Now);
-                    writer.WriteLine("Cube distance from paper position: x= " + cubeDisX + ", y= " + cubeDisY + ", z= " + cubeDisZ);
-                    writer.WriteLine("\n");
-                }
-            }
 
             // Screw Distances
             if (objectInHand.name == "screwBig")
@@ -256,7 +189,6 @@ public class ControllerGrabObject : MonoBehaviour {
                     float bigScrewTwoDimDisY = bigScrewBotY - crossTwoDimY;
                     float bigScrewTwoDimDisZ = bigScrewBotZ - crossTwoDimZ;
 
-                    writer.WriteLine("Current DateTime on releasing screw: " + System.DateTime.Now);
                     writer.WriteLine("Small screw distance from 2D cross position: x= " + smallScrewTwoDimDisX + ", y= " + smallScrewTwoDimDisY + ", z= " + smallScrewTwoDimDisZ);
                     writer.WriteLine("Big screw distance from 2D cross position: x= " + bigScrewTwoDimDisX + ", y= " + bigScrewTwoDimDisY + ", z=" + bigScrewTwoDimDisZ);
                     writer.WriteLine("Screw local rotation: x= " + screwRotX + ", y= " + screwRotY + ", z= " + screwRotZ);
@@ -276,7 +208,6 @@ public class ControllerGrabObject : MonoBehaviour {
                     float bigScrewThreeDimDisY = bigScrewBotY - crossThreeDimY;
                     float bigScrewThreeDimDisZ = bigScrewBotZ - crossThreeDimZ;
 
-                    writer.WriteLine("Current DateTime on releasing screw: " + System.DateTime.Now);
                     writer.WriteLine("Small screw distance from 3D cross position: x= " + smallScrewThreeDimDisX + ", y= " + smallScrewThreeDimDisY + ", z= " + smallScrewThreeDimDisZ);
                     writer.WriteLine("Big screw distance from 3D cross position: x= " + bigScrewThreeDimDisX + ", y= " + bigScrewThreeDimDisY + ", z= " + bigScrewThreeDimDisZ);
                     writer.WriteLine("Screw local rotation: x= " + screwRotX + ", y= " + screwRotY + ", z= " + screwRotZ);
@@ -296,7 +227,6 @@ public class ControllerGrabObject : MonoBehaviour {
                     float bigScrewThreeSecDimDisY = bigScrewBotY - crossThreeSecDimY;
                     float bigScrewThreeSecDimDisZ = bigScrewBotZ - crossThreeSecDimZ;
 
-                    writer.WriteLine("Current DateTime on releasing screw: " + System.DateTime.Now);
                     writer.WriteLine("Small screw distance from 3D_2 cross position: x= " + smallScrewThreeSecDimDisX + ", y= " + smallScrewThreeSecDimDisY + ", z= " + smallScrewThreeSecDimDisZ);
                     writer.WriteLine("Big screw distance from 3D_2 cross position: x= " + bigScrewThreeSecDimDisX + ", y= " + bigScrewThreeSecDimDisY + ", z= " + bigScrewThreeSecDimDisZ);
                     writer.WriteLine("Screw local rotation: x= " + screwRotX + ", y= " + screwRotY + ", z= " + screwRotZ);
@@ -335,7 +265,6 @@ public class ControllerGrabObject : MonoBehaviour {
                     float bigNailTwoDimDisY = bigNailBotY - crossTwoDimY;
                     float bigNailTwoDimDisZ = bigNailBotZ - crossTwoDimZ;
 
-                    writer.WriteLine("Current DateTime on releasing nail: " + System.DateTime.Now);
                     writer.WriteLine("Small nail distance from 2D cross position: x= " + smallNailTwoDimDisX + ", y= " + smallNailTwoDimDisY + ", z= " + smallNailTwoDimDisZ);
                     writer.WriteLine("Big nail distance from 2D cross position: x= " + bigNailTwoDimDisX + ", y= " + bigNailTwoDimDisY + ", z= " + bigNailTwoDimDisZ);
                     writer.WriteLine("Nail local rotation: x= " + nailRotX + ", y= " + nailRotY + ", z= " + nailRotZ);
@@ -355,7 +284,6 @@ public class ControllerGrabObject : MonoBehaviour {
                     float bigNailThreeDimDisY = bigNailBotY - crossThreeDimY;
                     float bigNailThreeDimDisZ = bigNailBotZ - crossThreeDimZ;
 
-                    writer.WriteLine("Current DateTime on releasing nail: " + System.DateTime.Now);
                     writer.WriteLine("Small nail distance from 3D cross position: x= " + smallNailThreeDimDisX + ", y= " + smallNailThreeDimDisY + ", z= " + smallNailThreeDimDisZ);
                     writer.WriteLine("Big nail distance from 3D cross position: x= " + bigNailThreeDimDisX + ", y= " + bigNailThreeDimDisY + ", z= " + bigNailThreeDimDisZ);
                     writer.WriteLine("Nail local rotation: x= " + nailRotX + ", y= " + nailRotY + ", z= " + nailRotZ);
@@ -375,7 +303,6 @@ public class ControllerGrabObject : MonoBehaviour {
                     float bigNailThreeSecDimDisY = bigNailBotY - crossThreeSecDimY;
                     float bigNailThreeSecDimDisZ = bigNailBotZ - crossThreeSecDimZ;
 
-                    writer.WriteLine("Current DateTime on releasing nail: " + System.DateTime.Now);
                     writer.WriteLine("Small nail distance from 3D_2 cross position: x= " + smallNailThreeSecDimDisX + ", y= " + smallNailThreeSecDimDisY + ", z= " + smallNailThreeSecDimDisZ);
                     writer.WriteLine("Big nail distance from 3D_2 cross position: x= " + bigNailThreeSecDimDisX + ", y= " + bigNailThreeSecDimDisY + ", z= " + bigNailThreeSecDimDisZ);
                     writer.WriteLine("Nail local rotation: x= " + nailRotX + ", y= " + nailRotY + ", z= " + nailRotZ);
@@ -391,7 +318,7 @@ public class ControllerGrabObject : MonoBehaviour {
     }
 
     public void Update() {
-        if (Controller.GetHairTriggerDown())
+        /*if (Controller.GetHairTriggerDown())
         {
             if (collidingObject)
             {
@@ -405,11 +332,30 @@ public class ControllerGrabObject : MonoBehaviour {
                 ReleaseObject();
             }
         }
+        */
         // Pressing space bar resets the scene
-        if ( Input.GetKeyDown(KeyCode.Space) )
+        if( Input.GetKeyDown(KeyCode.Space) )
         {
-            Debug.Log("Restarted scene!");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Debug.Log( "Pressed space key" );
+            SceneManager.LoadScene( SceneManager.GetActiveScene().name );
+        }
+
+        // Move camera with keyboard
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
+        }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Translate(new Vector3(-speed * Time.deltaTime, 0, 0));
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            transform.Translate(new Vector3(0, -speed * Time.deltaTime, 0));
+        }
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            transform.Translate(new Vector3(0, speed * Time.deltaTime, 0));
         }
     }
 }
