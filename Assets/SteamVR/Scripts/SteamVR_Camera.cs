@@ -198,13 +198,6 @@ public class SteamVR_Camera : MonoBehaviour
 			while (transform.childCount > 0)
 				transform.GetChild(0).parent = head;
 
-			var guiLayer = GetComponent<GUILayer>();
-			if (guiLayer != null)
-			{
-				DestroyImmediate(guiLayer);
-				head.gameObject.AddComponent<GUILayer>();
-			}
-
 			var audioListener = GetComponent<AudioListener>();
 			if (audioListener != null)
 			{
@@ -228,13 +221,6 @@ public class SteamVR_Camera : MonoBehaviour
 		// Move children and components from head back to camera.
 		while (head.childCount > 0)
 			head.GetChild(0).parent = transform;
-
-		var guiLayer = head.GetComponent<GUILayer>();
-		if (guiLayer != null)
-		{
-			DestroyImmediate(guiLayer);
-			gameObject.AddComponent<GUILayer>();
-		}
 
 		if (ears != null)
 		{
