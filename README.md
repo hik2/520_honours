@@ -5,12 +5,12 @@
 ### Prerequisites
 
 * VR-ready PC
-* Unity 2018.3.5
+* Unity 2019.3.3f1
 * PC-VR Headset & Controllers
 
 ### Running
 
-1. Open Unity 2018.3.5.
+1. Open Unity 2019.3.3f1.
 2. Select ```520_honours``` under the Project tab. If opening for the first time, select ```Open``` and navigate to the correct directory that contains this respository, select the ```520_honours``` folder.
 3. The Windows Mixed Reality Portal and SteamVR should automatically launch.
 4. Ensure the VR headset and controllers are turned on.
@@ -21,6 +21,7 @@
 ## Built with
 
 * [Unity 2018.3.5](https://unity3d.com/get-unity/download/archive) - Game Engine for VR
+    * Updated to [Unity 2019.3.3f1](https://unity3d.com/get-unity/download/archive)
 * Samsung HMD Odyssey - Headset used
 * Windows Mixed Reality Controllers - Controllers used
 * [SteamVR Plugin](https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647) - Unity plugin for PC VR
