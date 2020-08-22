@@ -21,7 +21,7 @@ Human Interaction with Miniscule Fasteners in Virtual Reality (VR)
     
 ## Built with
 
-* [Unity 2018.3.5](https://unity3d.com/get-unity/download/archive) - Game Engine for Virtual Reality
+* [Unity 2018.3.5](https://unity3d.com/get-unity/download/archive) - Game Engine for VR
     * Updated to [Unity 2019.3.3f1](https://unity3d.com/get-unity/download/archive)
 * Samsung HMD Odyssey - VR Headset used
 * Windows Mixed Reality Controllers - VR Controllers used
