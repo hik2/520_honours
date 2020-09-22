@@ -1,6 +1,10 @@
 # Human Interaction with Miniscule Fasteners in Virtual Reality
 University of Waikato 2019-2020 COMPX520 Honours Project
 
+<p align="center">
+  <img src=Images/table.PNG>
+</p>
+
 ## Getting Started
 
 ### Prerequisites
